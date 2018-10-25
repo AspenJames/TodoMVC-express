@@ -18,6 +18,14 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      TodoListId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "TodoList",
+          key: "id"
+        }
       }
     });
   },
