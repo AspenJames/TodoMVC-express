@@ -11,9 +11,20 @@ router.get('/', (req, res) => {
         lists: lists
       });
     });
-});
+  });
 
-/* POST lists */
+  /* POST /lists/:id */
+  router.post('/:id', (req, res) => {
+    console.log(req.params)
+    models.TodoItem.create({
+      TodoListId: parseInt(req.params.id),
+      name: req.body.name
+    }).then(() => {
+      res.redirect(`/lists/${req.params.id}`);
+    })
+  })
+
+  /* POST lists */
 router.post('/', (req, res) => {
   models.TodoList.create({
     name: req.body.name
@@ -28,11 +39,12 @@ router.get('/:id', (req, res) => {
   }).then(list => {
     res.render('list', {
       title: "ToDo MVC",
-      list: list.name, 
+      list: list, 
       todos: list.TodoItems
     });
   })
 })
+
 
 /* DELETE /:id */
 router.get('/:id/destroy', (req, res) => {
