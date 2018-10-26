@@ -6,6 +6,14 @@
   </head>
   <body>
     <h1>{title}</h1>
-    <p>Welcome to {title}</p>
+    <p>This is a Todo list application built using Node.js, Express.js, and Sequelize.js to create a basic MVC with an SQLite database.</p>
+    <form action='/lists' method='POST'>
+      <input type='text' name='name' id='name' placeholder='New ToDo' />
+      <input type='submit' value='Create' />
+    </form>
+    <ul>
+      {#lists}<li><a href='/lists/{id}'>{name}</a><span> | </span><a href='/lists/{id}/destroy'>Delete</a></li>{/lists}
+    </ul>
+
   </body>
 </html>
