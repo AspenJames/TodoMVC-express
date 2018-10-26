@@ -12,7 +12,8 @@
     <input type='text' name='name' placeholder='New Todo Item' />
   </form>
   <ul>
-    {#todos}<li>{name}</li>{/todos}
+    {#todos}<li>{name}<span> | </span><a href='/lists/{list.id}/items/{id}/destroy'>Delete</a></li>{/todos}
   </ul>
+  <a href='/'>Home</a>
 </body>
 </html>

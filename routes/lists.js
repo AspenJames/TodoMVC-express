@@ -45,6 +45,16 @@ router.get('/:id', (req, res) => {
   })
 })
 
+/* DELETE /lists/:listId/items/:id */
+router.get('/:listId/items/:id/destroy', (req, res) => {
+  models.TodoItem.destroy({
+    where: {
+      id: parseInt(req.params.id)
+    }
+  }).then(() => {
+    res.redirect(`/lists/${req.params.listId}`);
+  });
+});
 
 /* DELETE /:id */
 router.get('/:id/destroy', (req, res) => {
